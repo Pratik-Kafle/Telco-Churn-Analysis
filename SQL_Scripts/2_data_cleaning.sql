@@ -1,3 +1,4 @@
+-- Checking for NULL values
 SELECT * FROM raw_telco_churn
 WHERE
 	customerid IS NULL
@@ -41,7 +42,8 @@ WHERE
 
 
 
-/* STEP 1: Handle Missing Values 
+
+/*  Handling Missing Values 
 The raw data contains ' ' (space)
 We set these to NULL (or 0) so we can convert the column type.
 */
@@ -50,7 +52,7 @@ UPDATE raw_telco_churn
 SET TotalCharges = NULL
 WHERE TotalCharges = ' ';
 
-/* STEP 2: Fix Data Types
+/* Fix Data Types
 Now that the bad text is gone, we convert the column to a decimal 
 so we can sum/average it later.
 */
